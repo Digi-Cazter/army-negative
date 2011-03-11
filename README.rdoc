@@ -1,0 +1,45 @@
+= army-negative: negative one's for true!
+
+This gem is a simple ActiveRecord MySQL (+ARMy+) connection adapter
+monkey-patch. Put it in your +Gemfile+ and all your +true+ are belong to us! Or,
+rather, they'll suddenly become very negative, negative one specifically.
+
+== What This Does
+
+This makes ActiveRecord store the value -1 into your +TINYINT+ +boolean+ columns
+whenever they're set to +true+. It also makes ActiveRecord recognize -1 as true
+when a +boolean+ field is queried.
+
+*NOTE:* positive one and all other values that were interpreted as +true+ by the
+MySQL connection adapter will still be recognized as +true+ too.
+
+== Why
+
+This was written for a rails application that needed to access a legacy MySQL
+database. The new application needed to work concurrently with the existing
+(old) application, following its conventions.
+
+The old application is a Microsoft Access 2003 _program_ that uses the "linked
+tables" feature to store the data in a MySQL database. Microsoft's Visual Basic
+for Applications (VBA) stores +true+ values in memory with all bits turned on.
+If interpreted as an integer using two's complement, this is negative one. So
+the old application stores all our +true+ values as negative one. Because of
+this, many of the hand-written legacy queries also write and expect to read true
+values as negative one.
+
+== The Name
+
+Though no one besides myself is likely to see or use this gem, I still wanted to
+push it out to the public for posterity. The +ar+ in ARmy is for ActiveRecord
+while the +my+ in arMy is for MySQL. I'm sure you can guess what _negative_ is
+supposed to reference.
+
+== Authors and Credits
+
+Authors:: Kendall Gifford
+
+== License
+
+Licensed using the standard {MIT License}[http://en.wikipedia.org/wiki/MIT_License].
+See the file {LICENSE}[http://github.com/zettabyte/army-negative/blob/master/LICENSE]
+in the root folder of the project.
