@@ -1,4 +1,4 @@
-= army-negative: negative one's for true!
+= army-negative: negative ones for true!
 
 This gem is a simple ActiveRecord MySQL (+ARMy+) connection adapter
 monkey-patch. Put it in your +Gemfile+ and all your +true+ are belong to us! Or,
