@@ -1,2 +1,6 @@
-pkg/*
-html/*
+*.gem
+.bundle
+Gemfile.lock
+pkg
+rdoc
+dummy/log

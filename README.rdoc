@@ -1,17 +1,48 @@
-= army-negative: negative ones for true!
+= Army::Negative -- Negative ones for true!
 
 This gem is a simple ActiveRecord MySQL (+ARMy+) connection adapter
 monkey-patch. Put it in your +Gemfile+ and all your +true+ are belong to us! Or,
 rather, they'll suddenly become very negative, negative one specifically.
 
+See the *Usage* section below for information on how to use this gem with rails
+<tt>2.3.x</tt>.
+
+== Versioning
+
+As of version <tt>2.0</tt>, a new versioning system has been employed. All
+<tt>2.x</tt> versions of this gem support rails versions <tt>2.3.x</tt>.
+
+Versions <tt>3.x</tt> of the gem will support rails versions <tt>3.x</tt>.
+
+== Usage
+
+In order to use this gem in your rails <tt>2.3.x</tt> app, first modify your
+<tt>config/environment.rb</tt> and add the following within the configuration
+block:
+
+  Rails::Initializer.run do |config|
+    # ...
+    config.gem "army-negative", :version => "~> 2.0"
+    # ...
+  end
+
+You can then run <tt>rake gems:install</tt> in order to install the gem.
+
+Finally, create a new _initializer_ file in <tt>config/initializers</tt> such as
+the following:
+
+  # config/initializers/army-negative.rb
+  require 'army-negative'
+  Army::Negative.activate!
+
 == What This Does
 
-This makes ActiveRecord store the value -1 into your +TINYINT+ +boolean+ columns
-whenever they're set to +true+. It also makes ActiveRecord recognize -1 as true
-when a +boolean+ field is queried.
+This makes ActiveRecord store the value <tt>-1</tt> into your +TINYINT+
++boolean+ columns whenever they're set to +true+. It also makes ActiveRecord
+recognize <tt>-1</tt> as +true+ when a +boolean+ field is queried.
 
-*NOTE:* positive one and all other values that were interpreted as +true+ by the
-MySQL connection adapter will still be recognized as +true+ too.
+<b>NOTE:</b> positive one and all other values that were interpreted as +true+
+by the MySQL connection adapter will still be recognized as +true+ too.
 
 == Why
 

@@ -3,7 +3,10 @@ module Army
     module Quoting
 
       #
-      # Extend ActiveRecord::ConnectionAdapters::Quoting
+      # Called when this module is included in
+      # ActiveRecord::ConnectionAdapters::Quoting. Uses #alias_method_chain to
+      # replace the original #quote method with our #quote_with_negative_one
+      # variation.
       #
       def self.included(klass)
         klass.instance_eval do
@@ -12,8 +15,8 @@ module Army
       end
 
       #
-      # Ensure "true" values get stored as -1 in the database where they'd
-      # normally have been stored as 1
+      # Wraps the original #quote method, ensuring that "true" values get stored
+      # as -1 in the database where they'd normally have been stored as 1.
       #
       def quote_with_negative_one(value, column = nil)
         result = quote_without_negative_one(value, column)
