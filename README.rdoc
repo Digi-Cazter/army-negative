@@ -4,36 +4,32 @@ This gem is a simple ActiveRecord MySQL (+ARMy+) connection adapter
 monkey-patch. Put it in your +Gemfile+ and all your +true+ are belong to us! Or,
 rather, they'll suddenly become very negative, negative one specifically.
 
-See the *Usage* section below for information on how to use this gem with rails
-<tt>2.3.x</tt>.
-
 == Versioning
 
-As of version <tt>2.0</tt>, a new versioning system has been employed. All
-<tt>2.x</tt> versions of this gem support rails versions <tt>2.3.x</tt>.
+In general, <tt>army-negative</tt> versions are _pinned_ to the supported rails
+version. Specifically, the major and minor version numbers will always match.
 
-Versions <tt>3.x</tt> of the gem will support rails versions <tt>3.x</tt>.
+So, to use <tt>army-negative</tt> in a rails app, you'd use a version specifier
+in its entry in your +Gemfile+.
+
+Examples:
+
+  gem "army-negative", "~> 3.0.0" # for all rails 3.0.x apps
+  gem "army-negative", "~> 3.1.0" # for all rails 3.1.x apps
+  gem "army-negative", "~> 4.5.6" # would work in any rails 4.5.x app
+  # etc.
+
+The exception to this rule is in rails <tt>2.3.x</tt> apps (the oldest supported
+rails version). For these versions, you should use the latest <tt>2.x</tt>
+version of <tt>army-negative</tt> (see the rails2 branch in the git repo).
 
 == Usage
 
-In order to use this gem in your rails <tt>2.3.x</tt> app, first modify your
-<tt>config/environment.rb</tt> and add the following within the configuration
-block:
+Simply put a line like the following in your +Gemfile+:
 
-  Rails::Initializer.run do |config|
-    # ...
-    config.gem "army-negative", :version => "~> 2.0"
-    # ...
-  end
+  gem "army-negative", "~> 3.0.0"
 
-You can then run <tt>rake gems:install</tt> in order to install the gem.
-
-Finally, create a new _initializer_ file in <tt>config/initializers</tt> such as
-the following:
-
-  # config/initializers/army-negative.rb
-  require 'army-negative'
-  Army::Negative.activate!
+Then do a <tt>bundle install</tt> on the command-line and you're set.
 
 == What This Does
 

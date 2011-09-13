@@ -1,3 +1,13 @@
+= 3.0.0, release 2011-09-13
+
+* Now version 3.0.0 (through 3.0.x) supports rails 3.0.y.
+* Updated cucumber-based test suite's rails app to rails 3.0.10
+
+From now on (version 3.0.0 and above) the major and minor versions of this gem
+will match major and minor version numbers of the supported rails version. Rails
+2.3.x support is still universally supported by any 2.y version of this gem (the
+minor version number doesn't have to match).
+
 = 2.0.0, release 2011-09-12
 
 * Reverted code so that the <tt>2.x</tt> series supports rails <tt>2.3.x</tt> apps.
