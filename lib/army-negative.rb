@@ -1,4 +1,5 @@
 require 'army-negative/version'
+require 'army-negative/railtie' if defined?(Rails)
 
 module Army
   module Negative
@@ -8,14 +9,12 @@ module Army
     autoload :MysqlAdapter, 'army-negative/mysql_adapter'
 
     #
-    # Call this in an initializer in order to active army-negative and ensure
-    # all true values get stored as -1 and -1's are recognized as true.
-    #
-    # Example:
-    #   require 'army-negative'
-    #   Army::Negative.activate!
+    # Called during gem initialization (via Army::Negative::Railtie) in order to
+    # active army-negative and ensure all true values get stored as -1 and that
+    # -1's are recognized as true.
     #
     def activate!
+      require 'active_record/connection_adapters/mysql_adapter'
       ActiveRecord::ConnectionAdapters::Column.send       :extend,  Column
       ActiveRecord::ConnectionAdapters::Quoting.send      :include, Quoting
       ActiveRecord::ConnectionAdapters::MysqlAdapter.send :include, MysqlAdapter
