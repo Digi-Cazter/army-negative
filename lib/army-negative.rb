@@ -14,10 +14,18 @@ module Army
     # -1's are recognized as true.
     #
     def activate!
-      require 'active_record/connection_adapters/mysql_adapter'
-      ActiveRecord::ConnectionAdapters::Column.send       :extend,  Column
-      ActiveRecord::ConnectionAdapters::Quoting.send      :include, Quoting
-      ActiveRecord::ConnectionAdapters::MysqlAdapter.send :include, MysqlAdapter
+      ActiveRecord::ConnectionAdapters::Column.send  :extend,  Column
+      ActiveRecord::ConnectionAdapters::Quoting.send :include, Quoting
+      # There may be one of two mysql adapters...
+      adapter = 0
+      begin
+        adapter += 1
+        require "active_record/connection_adapters/mysql#{adapter == 1 ? "" : adapter}_adapter"
+      rescue LoadError => e
+        retry unless adapter >= 2
+        raise e
+      end
+      "ActiveRecord::ConnectionAdapters::Mysql#{adapter == 1 ? "" : adapter}Adapter".constantize.send :include, MysqlAdapter
     end
     module_function :activate!
 

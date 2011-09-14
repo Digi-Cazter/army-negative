@@ -32,8 +32,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency "rails",  "~> 3.0.0"
-  s.add_dependency "mysql2", "~> 0.2.11"
+  s.add_dependency "rails",  "~> 3.1.0"
+  s.add_dependency "mysql2", "~> 0.3.7"
 
   if s.respond_to?(:add_development_dependency)
     s.add_development_dependency "bundler",  "~> 1.0.18"

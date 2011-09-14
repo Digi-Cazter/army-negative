@@ -27,7 +27,7 @@ version of <tt>army-negative</tt> (see the rails2 branch in the git repo).
 
 Simply put a line like the following in your +Gemfile+:
 
-  gem "army-negative", "~> 3.0.0"
+  gem "army-negative", "~> 3.1.0"
 
 Then do a <tt>bundle install</tt> on the command-line and you're set.
 
