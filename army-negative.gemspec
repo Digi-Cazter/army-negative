@@ -36,7 +36,6 @@ Gem::Specification.new do |s|
   s.add_dependency "mysql2", "~> 0.3.7"
 
   if s.respond_to?(:add_development_dependency)
-    s.add_development_dependency "bundler",  "~> 1.0.18"
     s.add_development_dependency "cucumber", "~> 1.0.5"
     s.add_development_dependency "rspec",    "~> 2.6.0"
   end
