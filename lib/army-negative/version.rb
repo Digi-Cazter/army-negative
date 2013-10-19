@@ -1,9 +1,9 @@
 module Army
   module Negative
     module Version
-      MAJOR  = 4 
-      MINOR  = 0
-      TINY   = 0
+      MAJOR  = 3 
+      MINOR  = 2
+      TINY   = 13
       STRING = [MAJOR, MINOR, TINY].join(".")
     end
   end
